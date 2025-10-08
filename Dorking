@@ -1,0 +1,49 @@
+Common Google Dork operators
+- site: Restrict search to a domain (e.g., site:example.com)
+- filetype: Restrict results to file types (e.g., filetype:pdf)
+- inurl: Search within the URL (e.g., inurl:admin)
+- intitle: Search within the page title (e.g., intitle:"index of")
+- "exact phrase" Exact phrase match
+- -term Exclude results containing term
+Practical dorks and examples
+Use these dorks for learning and authorized testing only. Replace example.com with the
+target domain when authorized.
+1. Find exposed configuration files:
+site:example.com ext:env OR filetype:env
+2. Search for exposed backups:
+site:example.com (filetype:sql | filetype:bak | filetype:zip) "index of"
+3. Look for exposed log files:
+site:example.com filetype:log
+4. Find public directory listings:
+site:example.com intitle:"index of"
+5. Find exposed admin panels:
+site:example.com inurl:admin OR inurl:login
+6. Find pages containing passwords or credentials:
+site:example.com "password" OR "passwd" OR "credentials"
+7. Find exposed Excel/Word files:
+site:example.com (filetype:xls OR filetype:xlsx OR filetype:doc OR filetype:docx)
+
+8. Locate .git repositories exposed:
+site:example.com intitle:"index of" ".git"
+9. Search for config.php files:
+site:example.com inurl:config.php
+10. Find SSH keys or PEM files:
+site:example.com filetype:pem OR filetype:key OR filetype:ppk
+How to interpret results
+- Review search results carefully; many hits will be false positives or benign.
+- If you find sensitive files, do NOT download or distribute them. Document the URL and
+notify the site owner responsibly (follow responsible disclosure practices).
+- Use tools like wget or curl only when authorized. Example (authorized use):
+wget --spider <url> # check existence without downloading
+Sample lab exercise (authorized)
+1. Choose a domain you own or a lab domain.
+2. Run several dorks and collect results in a spreadsheet (URL, query used, notes).
+3. For any interesting finding, capture a screenshot and do not download sensitive material.
+4. Report findings with remediation suggestions (remove files from webroot, restrict
+indexing via robots.txt, add authentication).
+Remediation tips for site owners
+- Remove sensitive files from web-accessible directories.
+- Use proper access controls and authentication.
+- Disable directory listing on the web server (e.g., apache: `Options -Indexes`).
+- Use robots.txt to discourage indexing (do not rely on it for security).
+- Regularly scan public-facing servers for exposed files.
