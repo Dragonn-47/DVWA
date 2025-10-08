@@ -1,0 +1,50 @@
+ OpenVAS Demo, alternative for Nessus 
+Title: Running OpenVAS for Vulnerability Scanning 
+1. Setup 
+• Install OpenVAS on Linux using: 
+sudo apt install openvas 
+• Run initial setup: 
+sudo gvm-setup 
+• Start OpenVAS services: 
+sudo gvm-start 
+2. Login 
+• Open a web browser and navigate to: https://127.0.0.1:9392 
+• Login with admin credentials created during setup 
+3. Create Target and Task 
+• Go to Targets → New Target, enter the IP address or hostname 
+• Go to Tasks → New Task, select the target, and save 
+4. Run Scan 
+• Select the task and click Start 
+• Wait for the scan to complete 
+5. View Results 
+• Navigate to Reports → select the latest report 
+• Review the detected vulnerabilities, severity, and CVEs 
+Summary: 
+This process demonstrates how to use OpenVAS to perform a basic vulnerability scan, create 
+targets, run tasks, and view results. 
+
+ Alternative for Matlego 
+Title: Using SpiderFoot for OSINT Recon 
+1. Setup 
+• Clone the repository: 
+git clone https://github.com/smicallef/spiderfoot.git 
+cd spiderfoot 
+Install dependencies: 
+python3 -m pip install -r requirements.txt 
+2. Start Web UI 
+• Launch SpiderFoot: 
+python3 sf.py -l 127.0.0.1:5001 
+• Open a web browser at: http://127.0.0.1:5001 
+3. Create Scan 
+• Click New Scan 
+• Enter the domain or IP to investigate 
+• Select modules (default is fine) and save 
+4. Start Scan 
+• Click Start Scan 
+• Monitor progress in the web interface 
+5. View Results 
+• Navigate to Results 
+• Explore data such as subdomains, open ports, and email addresses 
+Summary: 
+This demonstrates using SpiderFoot to perform automated OSINT reconnaissance, create 
+and run scans, and analyse results efficiently.
